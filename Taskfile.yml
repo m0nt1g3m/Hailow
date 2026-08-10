@@ -1,0 +1,47 @@
+version: '3'
+
+tasks:
+  update-submodules:
+    desc: Updates all Git submodules recursively to their latest remote commits and merges changes.
+    cmds:
+      - git submodule update --remote --merge --recursive
+
+  setup-symlinks:
+    desc: Creates symlinks for the shared .env file in all service subdirectories.
+    cmds:
+      - |
+        SERVICES=(
+          "HailowApiGateway"
+          "HailowAuthService"
+          "HailowProductService"
+          "HailowPaymentService"
+          "HailowCartService"
+        )
+        for service in "${SERVICES[@]}"; do
+          if [ -d "$service" ]; then
+            echo "  → $service"
+            cd "$service"
+            rm -f .env
+            ln -s ../.env .env
+            cd ..
+          else
+            echo "  ⚠️ $service not found (skipping)"
+          fi
+        done
+        echo "✅ Symlinks created!"
+        
+  setup-symlinks-win:
+    desc: Creates symlinks for the shared .env file in all service subdirectories (Windows).
+    cmds:
+      - |
+        $SERVICES = @("HailowApiGateway", "HailowAuthService", "HailowProductService", "HailowPaymentService", "HailowCartService")
+        foreach ($service in $SERVICES) {
+          if (Test-Path $service) {
+            Write-Host "  → $service"
+            Remove-Item -Path "$service\.env" -Force -ErrorAction SilentlyContinue
+            New-Item -ItemType SymbolicLink -Path "$service\.env" -Target "..\.env" | Out-Null
+          } else {
+            Write-Host "  ⚠️ $service not found (skipping)"
+          }
+        }
+        Write-Host "✅ Symlinks created!"

@@ -1,0 +1,135 @@
+services:
+  # RabbitMQ
+  rabbitmq:
+    image: rabbitmq:4.3-management-alpine
+    container_name: hailow-rabbitmq
+    ports:
+      - "15672:15672" # Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_running"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - hailow-network
+
+  # PostgreSQL
+  postgres:
+    image: postgres:18-alpine
+    container_name: hailow-postgres
+    #ports:
+    #  - "5433:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    networks:
+      - hailow-network
+
+  # Redis
+  redis:
+    image: redis:7-alpine
+    container_name: hailow-redis
+    volumes:
+      - redis_data:/data
+    networks:
+      - hailow-network
+  
+  # Api gateway
+  api-gateway:
+    platform: linux/amd64
+    build:
+      context: ./HailowApiGateway
+      dockerfile: Dockerfile
+    container_name: hailow-api-gateway
+    ports:
+      - "8080:8080" #HTTP
+      - "8081:8081" #HTTPS
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - rabbitmq
+      - auth-service
+      # - product-service
+    networks:
+      - hailow-network
+  
+  # # Auth service
+  auth-service:
+    build:
+      context: ./HailowAuthService
+      dockerfile: Dockerfile
+    
+    container_name: hailow-auth-service
+    ports:
+      - "50001:50001"
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - hailow-network
+
+  # # Product service
+  # product-service:
+  #   build:
+  #     context: ./HailowProductService
+  #     dockerfile: Dockerfile
+  #   container_name: hailow-product-service
+  #   ports:
+  #     - "50052:50052"
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - hailow-network
+
+  # # Cart service
+  # cart-service:
+  #   build:
+  #     context: ./HailowCartService
+  #     dockerfile: Dockerfile
+  #   container_name: hailow-cart-service
+  #   ports:
+  #     - "50053:50053"
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - redis
+  #   networks:
+  #     - hailow-network
+
+  # # Payment service
+  # payment-service:
+  #   build:
+  #     context: ./HailowPaymentService
+  #     dockerfile: Dockerfile
+  #   container_name: hailow-payment-service
+  #   ports:
+  #     - "50054:50054"
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - postgres
+  #     - rabbitmq
+  #   networks:
+  #     - hailow-network
+
+volumes:
+  rabbitmq_data:
+  postgres_data:
+  redis_data:
+
+networks:
+  hailow-network:
+    driver: bridge

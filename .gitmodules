@@ -1,0 +1,15 @@
+[submodule "HailowApiGateway"]
+	path = HailowApiGateway
+	url = https://github.com/SpeeDark/HailowApiGateway.git
+[submodule "HailowAuthService"]
+	path = HailowAuthService
+	url = https://github.com/m0nt1g3m/HailowAuthService.git
+[submodule "HailowPaymentService"]
+	path = HailowPaymentService
+	url = https://github.com/m0nt1g3m/HailowPaymentService.git
+[submodule "HailowProductService"]
+	path = HailowProductService
+	url = https://github.com/m0nt1g3m/HailowProductService.git
+[submodule "HailowSellerService"]
+	path = HailowSellerService
+	url = https://github.com/m0nt1g3m/HailowSellerService.git
