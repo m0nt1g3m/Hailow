@@ -4,7 +4,7 @@ tasks:
   update-submodules:
     desc: Updates all Git submodules recursively to their latest remote commits and merges changes.
     cmds:
-      - git submodule update --remote --merge --recursive
+      - git submodule update --remote --rebase --recursive
 
   setup-symlinks:
     desc: Creates symlinks for the shared .env file in all service subdirectories.
