@@ -1,0 +1,255 @@
+{
+  "info": {
+    "_postman_id": "40894ccb-4f94-4439-9036-2eabd6df6014",
+    "name": "HailowApiGateway",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "42948084"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "SignUp Customer",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"nickjaja686@gmail.com\",\n    \"password\": \"HasbinHotel_13\",\n    \"phoneNumber\": \"+79009009090\",\n    \"firstName\": \"Nick\",\n    \"lastName\": \"Jaja\",\n    \"city\": \"vrn\",\n    \"street\": \"pogonovo\",\n    \"building\": \"10\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/auth/signup-customer",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "auth",
+                "signup-customer"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SignIn",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"nickjaja686@gmail.com\",\n    \"password\": \"HasbinHotel_13\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/auth/signin",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "auth",
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Refresh",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"refreshToken\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/auth/refresh",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "auth",
+                "refresh"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"refreshToken\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/auth/logout",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetProfile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:CustomerAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/auth/profile/48647bee-a43e-44de-a4ff-c9e449074e9d",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "auth",
+                "profile",
+                "48647bee-a43e-44de-a4ff-c9e449074e9d"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateProfileData",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"firstName\": \"Dan\",\n    \"lastName\": \"Boringson\",\n    \"email\": \"danbor913@gmail.com\",\n    \"phoneNubmer\": \"+79009009999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/auth/profile/48647bee-a43e-44de-a4ff-c9e449074e9d",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "auth",
+                "profile",
+                "48647bee-a43e-44de-a4ff-c9e449074e9d"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateDeliveryData",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"city\": \"msk\",\n    \"street\": \"Red street\",\n    \"building\": \"5\",\n    // \"porch\": \"2\",\n    \"floor\": \"1\",\n    \"flat\": \"12\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/auth/profile/48647bee-a43e-44de-a4ff-c9e449074e9d/delivery",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "auth",
+                "profile",
+                "48647bee-a43e-44de-a4ff-c9e449074e9d",
+                "delivery"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UploadAvatar",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "avatarFile",
+                  "type": "file",
+                  "uuid": "d4f245f4-36b2-4b28-8df7-00a79d2233ee"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/auth/profile/48647bee-a43e-44de-a4ff-c9e449074e9d/delivery",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "auth",
+                "profile",
+                "48647bee-a43e-44de-a4ff-c9e449074e9d",
+                "delivery"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

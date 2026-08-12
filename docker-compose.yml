@@ -62,11 +62,28 @@ services:
       - postgres
       - rabbitmq
       - redis
+      # - order-service
       - auth-service
       # - product-service
     networks:
       - hailow-network
   
+  # Order service
+  # order-service:
+  #   build:
+  #     context: ./HailowOrderService
+  #     dockerfile: Dockerfile
+  #   container_name: hailow-order-service
+  #   ports:
+  #     - "50010:50010"
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - postgres
+  #     - rabbitmq
+  #   networks:
+  #     - hailow-network
+
   # # Auth service
   auth-service:
     build:

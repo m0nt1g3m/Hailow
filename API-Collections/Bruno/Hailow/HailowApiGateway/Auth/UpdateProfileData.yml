@@ -1,0 +1,26 @@
+info:
+  name: UpdateProfileData
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: http://localhost:8080/auth/profile/48647bee-a43e-44de-a4ff-c9e449074e9d
+  body:
+    type: json
+    data: |-
+      {
+          "firstName": "Dan",
+          "lastName": "Boringson",
+          "email": "danbor913@gmail.com",
+          "phoneNubmer": "+79009009999"
+      }
+  auth:
+    type: bearer
+    token: "{{JwtAccessTokenCustomer}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

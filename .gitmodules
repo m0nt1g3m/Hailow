@@ -13,3 +13,6 @@
 [submodule "HailowSellerService"]
 	path = HailowSellerService
 	url = https://github.com/m0nt1g3m/HailowSellerService.git
+[submodule "HailowOrderService"]
+	path = HailowOrderService
+	url = https://github.com/SpeeDark/HailowOrderService.git

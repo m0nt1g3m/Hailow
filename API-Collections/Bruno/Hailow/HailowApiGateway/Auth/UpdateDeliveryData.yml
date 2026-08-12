@@ -1,0 +1,28 @@
+info:
+  name: UpdateDeliveryData
+  type: http
+  seq: 7
+
+http:
+  method: PUT
+  url: http://localhost:8080/auth/profile/48647bee-a43e-44de-a4ff-c9e449074e9d/delivery
+  body:
+    type: json
+    data: |-
+      {
+          "city": "msk",
+          "street": "Red street",
+          "building": "5",
+          // "porch": "2",
+          "floor": "1",
+          "flat": "12"
+      }
+  auth:
+    type: bearer
+    token: "{{JwtAccessTokenCustomer}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

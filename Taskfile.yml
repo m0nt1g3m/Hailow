@@ -21,6 +21,7 @@ tasks:
           "HailowProductService"
           "HailowPaymentService"
           "HailowCartService"
+          "HailowOrderService"
         )
         for service in "${SERVICES[@]}"; do
           if [ -d "$service" ]; then
@@ -39,7 +40,7 @@ tasks:
     desc: Creates symlinks for the shared .env file in all service subdirectories (Windows).
     cmds:
       - |
-        $SERVICES = @("HailowApiGateway", "HailowAuthService", "HailowProductService", "HailowPaymentService", "HailowCartService")
+        $SERVICES = @("HailowApiGateway", "HailowAuthService", "HailowProductService", "HailowPaymentService", "HailowCartService", "HailowOrderService")
         foreach ($service in $SERVICES) {
           if (Test-Path $service) {
             Write-Host "  → $service"
