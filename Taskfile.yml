@@ -6,6 +6,11 @@ tasks:
     cmds:
       - git submodule update --remote --rebase --recursive
 
+  get-dev-branches:
+    desc: Checkout and pull dev branch for all submodules.
+    cmds:
+      - git submodule foreach --recursive 'git checkout dev && git pull origin dev'
+
   setup-symlinks:
     desc: Creates symlinks for the shared .env file in all service subdirectories.
     cmds:
@@ -45,3 +50,8 @@ tasks:
           }
         }
         Write-Host "✅ Symlinks created!"
+
+  fstart:
+    desc: Builds and starts all services using Docker Compose.
+    cmds:
+      - docker-compose up -d --build
