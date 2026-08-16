@@ -2,6 +2,25 @@ opencollection: 1.0.0
 
 info:
   name: Hailow
+config:
+  protobuf:
+    protoFiles:
+      - type: file
+        path: ../../../../HailowAuthService/HailowProto/AuthService/v1/auth_service.proto
+      - type: file
+        path: ../../../../HailowSellerService/HailowProto/SellerService/v1/seller_service.proto
+    importPaths:
+      - path: ../../../../HailowAuthService/HailowProto
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
 bundled: false
 extensions:
   bruno:

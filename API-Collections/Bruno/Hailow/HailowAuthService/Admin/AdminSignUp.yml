@@ -1,0 +1,24 @@
+info:
+  name: AdminSignUp
+  type: grpc
+  seq: 1
+
+grpc:
+  url: 0.0.0.0:50001
+  method: /AuthService.v1.AuthService/AdminSignUp
+  methodType: unary
+  protoFilePath: ../../../../HailowAuthService/HailowProto/AuthService/v1/auth_service.proto
+  message:
+    - title: message 1
+      message: |-
+        {
+            "first_name": "Иван",
+            "last_name": "Иванов",
+            "email": "admin@gmail.com",
+            "password": "abcde12345",
+            "phone_number": "84993950019",
+            "city":"Москва",
+            "street": "Арбат",
+            "building": "44с1"
+        }
+  auth: inherit

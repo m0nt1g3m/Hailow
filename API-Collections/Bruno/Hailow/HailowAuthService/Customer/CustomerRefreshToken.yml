@@ -1,0 +1,17 @@
+info:
+  name: CustomerRefreshToken
+  type: grpc
+  seq: 3
+
+grpc:
+  url: 0.0.0.0:50001
+  method: /AuthService.v1.AuthService/RefreshTokens
+  methodType: unary
+  protoFilePath: ../../../../HailowAuthService/HailowProto/AuthService/v1/auth_service.proto
+  message:
+    - title: message 1
+      message: |-
+        {
+            "refresh_token": ""
+        }
+  auth: inherit

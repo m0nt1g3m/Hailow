@@ -1,0 +1,20 @@
+info:
+  name: SellerSignUp
+  type: grpc
+  seq: 1
+
+grpc:
+  url: ""
+  method: /SellerService.v1.SellerService/SignUp
+  methodType: unary
+  protoFilePath: ../../../../HailowSellerService/HailowProto/SellerService/v1/seller_service.proto
+  message:
+    - title: message 1
+      message: |-
+        {
+            "first_name": "Pavel",
+            "last_name": "Safonov",
+            "email": "seller@gmail.com",
+            "password": "abcde12345"
+        }
+  auth: inherit
