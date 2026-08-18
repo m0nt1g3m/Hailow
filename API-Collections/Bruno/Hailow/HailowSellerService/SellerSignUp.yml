@@ -7,14 +7,5 @@ grpc:
   url: ""
   method: /SellerService.v1.SellerService/SignUp
   methodType: unary
-  protoFilePath: ../../../../HailowSellerService/HailowProto/SellerService/v1/seller_service.proto
-  message:
-    - title: message 1
-      message: |-
-        {
-            "first_name": "Pavel",
-            "last_name": "Safonov",
-            "email": "seller@gmail.com",
-            "password": "abcde12345"
-        }
+  protoFilePath: ../../HailowProto/SellerService/v1/seller_service.proto
   auth: inherit

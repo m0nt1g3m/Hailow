@@ -6,11 +6,11 @@ config:
   protobuf:
     protoFiles:
       - type: file
-        path: ../../../../HailowAuthService/HailowProto/AuthService/v1/auth_service.proto
+        path: ../../HailowProto/AuthService/v1/auth_service.proto
       - type: file
-        path: ../../../../HailowSellerService/HailowProto/SellerService/v1/seller_service.proto
+        path: ../../HailowProto/SellerService/v1/seller_service.proto
     importPaths:
-      - path: ../../../../HailowAuthService/HailowProto
+      - path: ../../HailowProto
   proxy:
     inherit: true
     config:

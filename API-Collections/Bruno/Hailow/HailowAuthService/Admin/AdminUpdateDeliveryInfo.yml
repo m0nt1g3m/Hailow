@@ -7,19 +7,7 @@ grpc:
   url: 0.0.0.0:50001
   method: /AuthService.v1.AuthService/UpdateDeliveryInfo
   methodType: unary
-  protoFilePath: ../../../../HailowAuthService/HailowProto/AuthService/v1/auth_service.proto
-  message:
-    - title: message 1
-      message: |-
-        {
-          "id": "",
-          "city": "Москва",
-          "street": "Арбат",
-          "building": "44с1",
-          "porch": "1",
-          "floor": "4",
-          "flat": "43"
-        }
+  protoFilePath: ../../HailowProto/AuthService/v1/auth_service.proto
   auth: inherit
 
 docs: Add access_token to field Token with type "Bearer Token"

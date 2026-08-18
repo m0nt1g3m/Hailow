@@ -16,3 +16,6 @@
 [submodule "HailowOrderService"]
 	path = HailowOrderService
 	url = https://github.com/SpeeDark/HailowOrderService.git
+[submodule "API-Collections/HailowProto"]
+	path = API-Collections/HailowProto
+	url = https://github.com/m0nt1g3m/HailowProto.git

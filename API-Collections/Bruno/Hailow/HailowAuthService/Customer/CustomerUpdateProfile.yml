@@ -7,18 +7,9 @@ grpc:
   url: 0.0.0.0:50001
   method: /AuthService.v1.AuthService/UpdateProfile
   methodType: unary
-  protoFilePath: ../../../../HailowAuthService/HailowProto/AuthService/v1/auth_service.proto
-  message:
-    - title: message 1
-      message: |-
-        {
-          "id": "",
-          "first_name": "Иван",
-          "last_name": "Иванов",
-          "email": "",
-          "phone_number": "customer_2@gmail.com"
-        }
+  protoFilePath: ../../HailowProto/AuthService/v1/auth_service.proto
   auth:
     type: bearer
+    token: ""
 
 docs: Add access_token to field Token with type "Bearer Token"
