@@ -7,10 +7,6 @@ config:
     protoFiles:
       - type: file
         path: ../../HailowProto/AuthService/v1/auth_service.proto
-      - type: file
-        path: ../../HailowProto/SellerService/v1/seller_service.proto
-    importPaths:
-      - path: ../../HailowProto
   proxy:
     inherit: true
     config:
