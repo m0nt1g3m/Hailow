@@ -1,0 +1,21 @@
+meta {
+  name: GetProfile
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:8080/auth/profile/48647bee-a43e-44de-a4ff-c9e449074e9d
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{JwtAccessTokenCustomer}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  forwardAuthorizationHeader: false
+}

@@ -1,0 +1,32 @@
+meta {
+  name: UpdateDeliveryData
+  type: http
+  seq: 7
+}
+
+put {
+  url: 
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{JwtAccessTokenCustomer}}
+}
+
+body:json {
+  {
+      "city": "msk",
+      "street": "Red street",
+      "building": "5",
+      // "porch": "2",
+      "floor": "1",
+      "flat": "12"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  forwardAuthorizationHeader: false
+}

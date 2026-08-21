@@ -1,0 +1,21 @@
+meta {
+  name: CustomerSignIn
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: 0.0.0.0:50001
+  body: grpc
+  auth: none
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "email": "customer@gmail.com",
+      "password": "abcde12345"
+    }
+  '''
+}

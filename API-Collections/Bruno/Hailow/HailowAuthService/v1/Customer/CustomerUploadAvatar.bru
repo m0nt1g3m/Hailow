@@ -1,0 +1,21 @@
+meta {
+  name: CustomerUploadAvatar
+  type: grpc
+  seq: 6
+}
+
+grpc {
+  url: 0.0.0.0:50001
+  body: grpc
+  auth: none
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+        "user_id": "023dbafe-2ebe-46ab-a02b-c978386bb234",
+        "avatar_image": ""
+    }
+  '''
+}

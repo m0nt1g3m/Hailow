@@ -1,0 +1,18 @@
+meta {
+  name: CustomerRefreshToken
+  type: grpc
+  seq: 4
+}
+
+grpc {
+  url: 0.0.0.0:50001
+  body: grpc
+  auth: none
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {}
+  '''
+}

@@ -1,0 +1,18 @@
+meta {
+  name: CustomerDeleteAccount
+  type: grpc
+  seq: 10
+}
+
+grpc {
+  url: 0.0.0.0:50001
+  body: grpc
+  auth: none
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {}
+  '''
+}

@@ -1,0 +1,27 @@
+meta {
+  name: CustomerSignUp
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: 0.0.0.0:50001
+  body: grpc
+  auth: none
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "first_name": "Павел",
+      "last_name": "Сафонов",
+      "email": "customer@gmail.com",
+      "password": "abcde12345",
+      "phone_number": "84993950019",
+      "city": "Москва",
+      "street": "Арбат",
+      "building": "44с1"
+    }
+  '''
+}

@@ -1,0 +1,20 @@
+meta {
+  name: CustomerGetProfile
+  type: grpc
+  seq: 9
+}
+
+grpc {
+  url: 0.0.0.0:50001
+  body: grpc
+  auth: none
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "id": ""
+    }
+  '''
+}

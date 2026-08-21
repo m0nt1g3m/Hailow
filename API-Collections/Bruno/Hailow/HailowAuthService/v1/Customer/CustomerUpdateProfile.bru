@@ -1,0 +1,23 @@
+meta {
+  name: CustomerUpdateProfile
+  type: grpc
+  seq: 7
+}
+
+grpc {
+  url: 0.0.0.0:50001
+  body: grpc
+  auth: none
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "first_name": "Павел",
+      "last_name": "Сафонов",
+      "email": "customer@gmail.com",
+      "phone_number": "84993950020"
+    }
+  '''
+}

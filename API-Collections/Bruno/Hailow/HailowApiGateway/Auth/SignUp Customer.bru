@@ -1,0 +1,30 @@
+meta {
+  name: SignUp Customer
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/auth/signup-customer
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "email": "nickjaja686@gmail.com",
+      "password": "HasbinHotel_13",
+      "phoneNumber": "+79009009090",
+      "firstName": "Nick",
+      "lastName": "Jaja",
+      "city": "vrn",
+      "street": "pogonovo",
+      "building": "10"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  forwardAuthorizationHeader: false
+}
