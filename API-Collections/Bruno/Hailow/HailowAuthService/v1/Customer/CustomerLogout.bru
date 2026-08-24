@@ -6,8 +6,17 @@ meta {
 
 grpc {
   url: 0.0.0.0:50001
+  method: /AuthService.v1.AuthService/Logout
   body: grpc
+  protoPath: ../../HailowProto/AuthService/v1/auth_service.proto
   auth: none
+  methodType: unary
+}
+
+metadata {
+  user-id: {{CUSTOMER_ID}}
+  user-role: {{CUSTOMER_ROLE}}
+  refresh-token: {{JWT_REFRESH_TOKEN}}
 }
 
 body:grpc {

@@ -6,13 +6,30 @@ meta {
 
 grpc {
   url: 0.0.0.0:50001
+  method: /AuthService.v1.AuthService/UpdateDeliveryInfo
   body: grpc
+  protoPath: ../../HailowProto/AuthService/v1/auth_service.proto
   auth: none
+  methodType: unary
+}
+
+metadata {
+  user-id: {{CUSTOMER_ID}}
+  user-role: {{CUSTOMER_ROLE}}
+  {{auth_metadata}}: Bearer {{JWT_ACCESS_TOKEN}}
 }
 
 body:grpc {
   name: message 1
   content: '''
-    {}
+    {
+      "id": "{{CUSTOMER_ID}}",
+      "city": "Москва",
+      "street": "Арбат",
+      "building": "44с1",
+      "porch": 4,
+      "floor": 6,
+      "flat": 8
+    }
   '''
 }

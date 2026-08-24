@@ -6,16 +6,19 @@ meta {
 
 grpc {
   url: 0.0.0.0:50001
+  method: /AuthService.v1.AuthService/CustomerSignUp
   body: grpc
+  protoPath: ../../HailowProto/AuthService/v1/auth_service.proto
   auth: none
+  methodType: unary
 }
 
 body:grpc {
   name: message 1
   content: '''
     {
-      "first_name": "Павел",
-      "last_name": "Сафонов",
+      "first_name": "Иван",
+      "last_name": "Иванов",
       "email": "customer@gmail.com",
       "password": "abcde12345",
       "phone_number": "84993950019",

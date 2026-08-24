@@ -6,15 +6,24 @@ meta {
 
 grpc {
   url: 0.0.0.0:50001
+  method: /AuthService.v1.AuthService/GetProfile
   body: grpc
+  protoPath: ../../HailowProto/AuthService/v1/auth_service.proto
   auth: none
+  methodType: unary
+}
+
+metadata {
+  user-id: {{CUSTOMER_ID}}
+  user-role: {{CUSTOMER_ROLE}}
+  {{auth_metadata}}: Bearer {{JWT_ACCESS_TOKEN}}
 }
 
 body:grpc {
   name: message 1
   content: '''
     {
-      "id": ""
+      "id": "{{CUSTOMER_ID}}"
     }
   '''
 }
