@@ -5,12 +5,16 @@
     "node_modules",
     ".git"
   ],
-  "size": 0.0055332183837890625,
-  "filesCount": 24,
+  "size": 2.391707420349121,
+  "filesCount": 25,
   "protobuf": {
     "protoFiles": [
       {
         "path": "../../HailowProto/AuthService/v1/auth_service.proto",
+        "type": "file"
+      },
+      {
+        "path": "../../HailowProto/SellerService/v1/seller_service.proto",
         "type": "file"
       }
     ],

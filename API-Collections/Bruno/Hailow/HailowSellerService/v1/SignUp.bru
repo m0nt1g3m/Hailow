@@ -1,0 +1,32 @@
+meta {
+  name: SignUp
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: 0.0.0.0:50003
+  method: /SellerService.v1.SellerService/SignUp
+  body: grpc
+  protoPath: ../../HailowProto/SellerService/v1/seller_service.proto
+  auth: none
+  methodType: unary
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "store_name": "cilicium",
+      "store_description": "clibanus",
+      "email": "demum",
+      "tin": "usitas",
+      "psrn": "alii",
+      "kpp": "sollicito",
+      "organization_form": "LLC",
+      "city": "jhjhh",
+      "street": "jjhjh",
+      "building": "hjhhj"
+    }
+  '''
+}
