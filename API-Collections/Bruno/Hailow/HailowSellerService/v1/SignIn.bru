@@ -1,0 +1,24 @@
+meta {
+  name: SignIn
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: 0.0.0.0:50003
+  method: /SellerService.v1.SellerService/SignIn
+  body: grpc
+  protoPath: ../../HailowProto/SellerService/v1/seller_service.proto
+  auth: none
+  methodType: unary
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "email": "apple@icloud.com",
+      "password": "abc12345"
+    }
+  '''
+}

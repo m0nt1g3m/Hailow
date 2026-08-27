@@ -1,0 +1,23 @@
+meta {
+  name: GetProfile
+  type: grpc
+  seq: 3
+}
+
+grpc {
+  url: 0.0.0.0:50003
+  method: /SellerService.v1.SellerProfileService/GetProfile
+  body: grpc
+  protoPath: ../../HailowProto/SellerService/v1/profile_service.proto
+  auth: none
+  methodType: unary
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "id": "{{SELLER_ID}}"
+    }
+  '''
+}
