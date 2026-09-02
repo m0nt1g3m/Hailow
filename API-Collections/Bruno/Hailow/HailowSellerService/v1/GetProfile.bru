@@ -13,6 +13,10 @@ grpc {
   methodType: unary
 }
 
+metadata {
+  seller-id: {{SELLER_ID}}
+}
+
 body:grpc {
   name: message 1
   content: '''

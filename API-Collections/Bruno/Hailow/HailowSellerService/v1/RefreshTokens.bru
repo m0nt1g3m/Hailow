@@ -1,0 +1,26 @@
+meta {
+  name: RefreshTokens
+  type: grpc
+  seq: 4
+}
+
+grpc {
+  url: 0.0.0.0:50003
+  method: /SellerService.v1.SellerService/RefreshTokens
+  body: grpc
+  protoPath: ../../HailowProto/SellerService/v1/seller_service.proto
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  seller-id: {{SELLER_ID}}
+  refresh-token: {{JWT_REFRESH_TOKEN}}
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {}
+  '''
+}
