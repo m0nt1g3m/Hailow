@@ -10,9 +10,13 @@ post {
   auth: inherit
 }
 
+headers {
+  refreshToken: {{JwtRefreshTokenCustomer}}
+}
+
 body:json {
   {
-      "refreshToken": ""
+      "refreshToken": "{{JwtRefreshTokenCustomer}}"
   }
 }
 
