@@ -1,0 +1,27 @@
+name: Telegram Notification on Push
+
+on: [push]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Format commit messages
+        id: format_commits
+        run: |
+          COMMITS=$(echo '${{ toJson(github.event.commits.*.message) }}' | jq -r '.[]')
+          
+          echo "COMMITS<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMMITS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Send Telegram Message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message_thread_id: ${{ secrets.TELEGRAM_THREAD_ID }}
+          message: |
+            ${{ github.actor }} pushed to ${{ github.ref_name }}
+            Repository: ${{ github.event.repository.name }}
+            Commits: ${{ steps.format_commits.outputs.COMMITS }}
