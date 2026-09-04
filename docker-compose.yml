@@ -34,6 +34,11 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     networks:
       - hailow-network
 
@@ -43,6 +48,11 @@ services:
     container_name: hailow-redis
     volumes:
       - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     networks:
       - hailow-network
   
@@ -58,13 +68,20 @@ services:
       - "8081:8081" #HTTPS
     env_file:
       - .env
+    restart: on-failure
     depends_on:
-      - postgres
-      - rabbitmq
-      - redis
-      # - order-service
-      - auth-service
-      # - product-service
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      auth-service:
+        condition: service_healthy
+      # order-service:
+      #   condition: service_healthy
+      # product-service:
+      #   condition: service_healthy
     networks:
       - hailow-network
   
@@ -96,8 +113,15 @@ services:
     env_file:
       - .env
     depends_on:
-      - redis
-      - postgres
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:  # ✅ Добавляем healthcheck для Auth Service
+      test: ["CMD", "nc", "-z", "localhost", "50001"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       - hailow-network
 
